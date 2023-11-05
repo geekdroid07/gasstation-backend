@@ -1,0 +1,64 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sorteos",
+  "info": {
+    "singularName": "sorteo",
+    "pluralName": "sorteos",
+    "displayName": "sorteo",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "DescuentoComodin": {
+      "type": "integer"
+    },
+    "EndDate": {
+      "type": "string"
+    },
+    "EndTime": {
+      "type": "string"
+    },
+    "GradeId": {
+      "type": "integer"
+    },
+    "Money": {
+      "type": "biginteger"
+    },
+    "Nozzle": {
+      "type": "integer"
+    },
+    "Precio": {
+      "type": "decimal"
+    },
+    "ProductName": {
+      "type": "string"
+    },
+    "Pump": {
+      "type": "integer"
+    },
+    "SaleId": {
+      "type": "biginteger"
+    },
+    "Turno": {
+      "type": "biginteger"
+    },
+    "Volume": {
+      "type": "float"
+    },
+    "isFidelized": {
+      "type": "boolean"
+    },
+    "Numero": {
+      "type": "string"
+    },
+    "Cedula": {
+      "type": "string"
+    },
+    "Nombre": {
+      "type": "string"
+    }
+  }
+}

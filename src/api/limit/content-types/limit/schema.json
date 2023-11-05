@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "limits",
+  "info": {
+    "singularName": "limit",
+    "pluralName": "limits",
+    "displayName": "Limit"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "LIMIT": {
+      "type": "integer"
+    }
+  }
+}
