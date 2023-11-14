@@ -362,82 +362,6 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface ApiLimitLimit extends Schema.CollectionType {
-  collectionName: 'limits';
-  info: {
-    singularName: 'limit';
-    pluralName: 'limits';
-    displayName: 'Limit';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    LIMIT: Attribute.Integer;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::limit.limit',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::limit.limit',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiSorteoSorteo extends Schema.CollectionType {
-  collectionName: 'sorteos';
-  info: {
-    singularName: 'sorteo';
-    pluralName: 'sorteos';
-    displayName: 'sorteo';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    DescuentoComodin: Attribute.Integer;
-    EndDate: Attribute.String;
-    EndTime: Attribute.String;
-    GradeId: Attribute.Integer;
-    Money: Attribute.BigInteger;
-    Nozzle: Attribute.Integer;
-    Precio: Attribute.Decimal;
-    ProductName: Attribute.String;
-    Pump: Attribute.Integer;
-    SaleId: Attribute.BigInteger;
-    Turno: Attribute.BigInteger;
-    Volume: Attribute.Float;
-    isFidelized: Attribute.Boolean;
-    Numero: Attribute.String;
-    Cedula: Attribute.String;
-    Nombre: Attribute.String;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::sorteo.sorteo',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::sorteo.sorteo',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -753,6 +677,121 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiLimitLimit extends Schema.CollectionType {
+  collectionName: 'limits';
+  info: {
+    singularName: 'limit';
+    pluralName: 'limits';
+    displayName: 'Limit';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    LIMIT: Attribute.Integer;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::limit.limit',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::limit.limit',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiNoSorteoNoSorteo extends Schema.CollectionType {
+  collectionName: 'no_sorteos';
+  info: {
+    singularName: 'no-sorteo';
+    pluralName: 'no-sorteos';
+    displayName: 'NoSorteo';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    NoSorteo: Attribute.BigInteger & Attribute.Required & Attribute.Unique;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::no-sorteo.no-sorteo',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::no-sorteo.no-sorteo',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiSorteoSorteo extends Schema.CollectionType {
+  collectionName: 'sorteos';
+  info: {
+    singularName: 'sorteo';
+    pluralName: 'sorteos';
+    displayName: 'sorteo';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    DescuentoComodin: Attribute.Integer;
+    EndDate: Attribute.String;
+    EndTime: Attribute.String;
+    GradeId: Attribute.Integer;
+    Money: Attribute.BigInteger;
+    Nozzle: Attribute.Integer;
+    Precio: Attribute.Decimal;
+    ProductName: Attribute.String;
+    Pump: Attribute.Integer;
+    SaleId: Attribute.BigInteger & Attribute.Unique;
+    Turno: Attribute.BigInteger;
+    Volume: Attribute.Float;
+    isFidelized: Attribute.Boolean;
+    Numero: Attribute.String;
+    Cedula: Attribute.String;
+    Nombre: Attribute.String;
+    NoTicket: Attribute.BigInteger &
+      Attribute.SetMinMax<{
+        max: '9999';
+      }>;
+    Sorteo: Attribute.Relation<
+      'api::sorteo.sorteo',
+      'oneToOne',
+      'api::no-sorteo.no-sorteo'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::sorteo.sorteo',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::sorteo.sorteo',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -763,14 +802,15 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
-      'api::limit.limit': ApiLimitLimit;
-      'api::sorteo.sorteo': ApiSorteoSorteo;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::i18n.locale': PluginI18NLocale;
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::limit.limit': ApiLimitLimit;
+      'api::no-sorteo.no-sorteo': ApiNoSorteoNoSorteo;
+      'api::sorteo.sorteo': ApiSorteoSorteo;
     }
   }
 }

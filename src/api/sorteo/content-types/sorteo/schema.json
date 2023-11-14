@@ -40,7 +40,8 @@
       "type": "integer"
     },
     "SaleId": {
-      "type": "biginteger"
+      "type": "biginteger",
+      "unique": true
     },
     "Turno": {
       "type": "biginteger"
@@ -59,6 +60,17 @@
     },
     "Nombre": {
       "type": "string"
+    },
+    "NoTicket": {
+      "type": "biginteger",
+      "required": false,
+      "unique": false,
+      "max": "9999"
+    },
+    "Sorteo": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::no-sorteo.no-sorteo"
     }
   }
 }

@@ -1,0 +1,20 @@
+{
+  "kind": "collectionType",
+  "collectionName": "no_sorteos",
+  "info": {
+    "singularName": "no-sorteo",
+    "pluralName": "no-sorteos",
+    "displayName": "NoSorteo"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "NoSorteo": {
+      "type": "biginteger",
+      "required": true,
+      "unique": true
+    }
+  }
+}
