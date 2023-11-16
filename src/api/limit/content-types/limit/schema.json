@@ -4,7 +4,8 @@
   "info": {
     "singularName": "limit",
     "pluralName": "limits",
-    "displayName": "Limit"
+    "displayName": "Limit",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -13,6 +14,12 @@
   "attributes": {
     "LIMIT": {
       "type": "integer"
+    },
+    "Volume": {
+      "type": "float"
+    },
+    "Monto": {
+      "type": "biginteger"
     }
   }
 }

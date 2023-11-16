@@ -683,12 +683,15 @@ export interface ApiLimitLimit extends Schema.CollectionType {
     singularName: 'limit';
     pluralName: 'limits';
     displayName: 'Limit';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
     LIMIT: Attribute.Integer;
+    Volume: Attribute.Float;
+    Monto: Attribute.BigInteger;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
